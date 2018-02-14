@@ -4,15 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/login"
     tools:context="com.example.alumne.sallelibrary.LoginActivity">
-
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    </fragment>
-
-
-
 
 </android.support.constraint.ConstraintLayout>
