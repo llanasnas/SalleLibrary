@@ -111,10 +111,10 @@ public class ButtonEditText extends LinearLayout implements View.OnClickListener
     @Override
     public void onClick(View view) {
 
-        if(!passwd.getText().toString().isEmpty()|| !email.getText().toString().isEmpty()){
-            mCallback.onButtonEditTextClicked(this,email.getText().toString(),passwd.getText().toString());
-        }else{
+        if(passwd.getText().toString().isEmpty() || email.getText().toString().isEmpty()){
             Toast.makeText(getContext(),"Faltan Cosas",Toast.LENGTH_LONG).show();
+        }else{
+            mCallback.onButtonEditTextClicked(this,email.getText().toString(),passwd.getText().toString());
         }
 
 

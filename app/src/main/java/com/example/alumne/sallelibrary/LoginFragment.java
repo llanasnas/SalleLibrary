@@ -35,7 +35,8 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login,container,false);
 
         ButtonEditText buttonEditText = view.findViewById(R.id.loginComponent);
-        
+        buttonEditText.setText("Account");
+        buttonEditText.setSecondText("Password");
 
 
         return inflater.inflate(R.layout.fragment_login, container, false);
