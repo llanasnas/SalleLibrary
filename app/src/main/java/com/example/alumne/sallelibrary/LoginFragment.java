@@ -35,15 +35,21 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login,container,false);
 
         ButtonEditText buttonEditText = view.findViewById(R.id.loginComponent);
-        buttonEditText.setText("Account");
+        buttonEditText.setFirstText("Account");
         buttonEditText.setSecondText("Password");
-
+        buttonEditText.setText("SUBMIT");
 
         return inflater.inflate(R.layout.fragment_login, container, false);
-
-
-
-
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        ButtonEditText buttonEditText = getView().findViewById(R.id.loginComponent);
+        buttonEditText.setFirstText("Account");
+        buttonEditText.setSecondText("Password");
+        buttonEditText.setText("SUBMIT");
+
+    }
 }

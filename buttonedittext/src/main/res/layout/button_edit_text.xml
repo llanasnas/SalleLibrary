@@ -25,6 +25,7 @@
         android:layout_width="@dimen/dimentext"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/blanc"
         android:background="@drawable/login_button"
         android:id="@+id/iniciar"/>
 

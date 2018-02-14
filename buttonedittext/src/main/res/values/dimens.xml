@@ -2,4 +2,5 @@
 <resources>
     <dimen name="dimentext">200dp</dimen>
     <dimen name="margins">30dp</dimen>
+    <dimen name="margin_login">180dp</dimen>
 </resources>
