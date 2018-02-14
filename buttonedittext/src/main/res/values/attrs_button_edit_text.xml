@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="ButtonEditText">
+        <attr name="hintFirstText" format="string" />
+        <attr name="hintSecondText" format="string" />
+        <attr name="text" format="string" />
+        <attr name="textSize" format="dimension" />
+    </declare-styleable>
+</resources>

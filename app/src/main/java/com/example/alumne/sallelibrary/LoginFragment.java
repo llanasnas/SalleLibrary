@@ -3,9 +3,12 @@ package com.example.alumne.sallelibrary;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.buttonedittext.ButtonEditText;
 
 
 /**
@@ -18,12 +21,28 @@ public class LoginFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_login,container,false);
+
+        ButtonEditText buttonEditText = view.findViewById(R.id.loginComponent);
+        
+
+
         return inflater.inflate(R.layout.fragment_login, container, false);
+
+
+
+
     }
 
 }
