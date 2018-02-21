@@ -10,5 +10,6 @@
     <string name="new_account">Registrarse</string>
     <string name="Submit">submit</string>
     <string name="passwd">Introduce tu contraseña</string>
+    <string name="confirm_pass">Confirmar contraseña</string>
     <string name="reg">Registro</string>
 </resources>
