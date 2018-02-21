@@ -1,8 +1,13 @@
 package com.example.alumne.sallelibrary;
 
-/**
- * Created by Alumne on 21/02/2018.
- */
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class SplashActivity {
+public class SplashActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+    }
 }
