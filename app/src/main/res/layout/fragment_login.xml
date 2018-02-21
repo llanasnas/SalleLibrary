@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context="com.example.alumne.sallelibrary.LoginFragment"
     >
@@ -8,10 +9,21 @@
     <!-- TODO: Update blank fragment layout -->
     <com.example.buttonedittext.ButtonEditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/margin_login"
         android:id="@+id/loginComponent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginComponent"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="@dimen/margins"
+        android:textSize="@dimen/register"
+        android:text="@string/new_account"
         />
 
 

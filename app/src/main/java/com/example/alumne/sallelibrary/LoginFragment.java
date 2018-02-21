@@ -14,7 +14,7 @@ import com.example.buttonedittext.ButtonEditText;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements ButtonEditText.onButtonEditTextClickedListener {
 
 
     public LoginFragment() {
@@ -35,10 +35,7 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login,container,false);
 
         ButtonEditText buttonEditText = view.findViewById(R.id.loginComponent);
-        buttonEditText.setFirstText("Account");
-        buttonEditText.setSecondText("Password");
-        buttonEditText.setText("SUBMIT");
-
+        buttonEditText.setOnButtonEditTextClickedListener(this);
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -47,9 +44,16 @@ public class LoginFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         ButtonEditText buttonEditText = getView().findViewById(R.id.loginComponent);
-        buttonEditText.setFirstText("Account");
-        buttonEditText.setSecondText("Password");
-        buttonEditText.setText("SUBMIT");
+        buttonEditText.setFirstText(getResources().getString(R.string.account));
+        buttonEditText.setSecondText(getResources().getString(R.string.password));
+        buttonEditText.setText(getResources().getString(R.string.Submit));
+
+    }
+
+    @Override
+    public void onButtonEditTextClicked(ButtonEditText source, String email, String passwd) {
+
+
 
     }
 }

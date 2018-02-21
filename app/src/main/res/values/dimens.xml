@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_login">182dp</dimen>
+    <dimen name="register">20dp</dimen>
 </resources>

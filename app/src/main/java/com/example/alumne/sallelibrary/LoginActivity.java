@@ -18,9 +18,5 @@ public class LoginActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().add(R.id.login, login).commit();
 
-
-
-
-
     }
 }
