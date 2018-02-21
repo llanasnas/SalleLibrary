@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.buttonedittext.ButtonEditText;
 
@@ -47,13 +48,22 @@ public class LoginFragment extends Fragment implements ButtonEditText.onButtonEd
         buttonEditText.setFirstText(getResources().getString(R.string.account));
         buttonEditText.setSecondText(getResources().getString(R.string.password));
         buttonEditText.setText(getResources().getString(R.string.Submit));
+        TextView register = (TextView) getView().findViewById(R.id.register);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginActivity activity = (LoginActivity) getActivity();
+                activity.fragmentTransaction();
+            }
+        });
+
+
 
     }
 
     @Override
     public void onButtonEditTextClicked(ButtonEditText source, String email, String passwd) {
-
-
 
     }
 }

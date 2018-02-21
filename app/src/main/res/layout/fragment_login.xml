@@ -23,6 +23,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="@dimen/margins"
         android:textSize="@dimen/register"
+        android:id="@+id/register"
         android:text="@string/new_account"
         />
 
