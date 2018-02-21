@@ -1,6 +1,8 @@
 package com.example.alumne.sallelibrary;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
@@ -12,6 +14,8 @@ import android.widget.EditText;
 
 import com.example.buttonedittext.ButtonEditText;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,7 +70,11 @@ public class RegisterFragment extends Fragment {
                     password.setError("No coincinciden los passwords");
                 }else{repasswordcheck=true;}
                 if(namecheck&&emailcheck&&passwordcheck&&repasswordcheck){
-                    
+                    HashMap infoUser = new HashMap<String,String>();
+                    infoUser.put("name",name.getText().toString());
+                    infoUser.put("email",email.getText().toString());
+                    infoUser.put("password",password.getText().toString());
+                    registerUser(infoUser);
                 }
 
             }
@@ -84,5 +92,14 @@ public class RegisterFragment extends Fragment {
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public void registerUser(HashMap<String,String> infoUser){
+        SharedPreferences pref= getActivity().getApplicationContext().getSharedPreferences("MyFilename", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        for(Map.Entry<String, String> entry : infoUser.entrySet()) {
+            editor.putString(entry.getKey(),entry.getValue());
+        }
+        editor.commit();
     }
 }
