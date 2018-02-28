@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.buttonedittext.ButtonEditText;
 
@@ -44,7 +46,7 @@ public class RegisterFragment extends Fragment {
 
         final EditText name = (EditText) getView().findViewById(R.id.name);
         final EditText email = (EditText) getView().findViewById(R.id.email);
-        final EditText password = (EditText) getView().findViewById(R.id.passwd);
+        final EditText password = (EditText) getView().findViewById(R.id.psswd);
         final EditText repassword = (EditText) getView().findViewById(R.id.rpsswd);
         Button submit = (Button) getView().findViewById(R.id.register);
 
@@ -71,10 +73,13 @@ public class RegisterFragment extends Fragment {
                 }else{repasswordcheck=true;}
                 if(namecheck&&emailcheck&&passwordcheck&&repasswordcheck){
                     HashMap infoUser = new HashMap<String,String>();
-                    infoUser.put("name",name.getText().toString());
-                    infoUser.put("email",email.getText().toString());
-                    infoUser.put("password",password.getText().toString());
-                    registerUser(infoUser);
+                    infoUser.put(email.getText().toString(),password.getText().toString());
+                    infoUser.put(email.getText().toString()+"/name",name.getText().toString());
+                    if(userExists(email.getText().toString())){
+                        registerUser(infoUser);
+                    }else{
+                        Toast.makeText(getActivity(),"Usuario ya registrado", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -83,9 +88,7 @@ public class RegisterFragment extends Fragment {
 
     }
 
-
     public boolean checkEmail(String email){
-
         Pattern pattern;
         Matcher matcher;
         final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -94,12 +97,26 @@ public class RegisterFragment extends Fragment {
         return matcher.matches();
     }
 
+    public boolean userExists(String email){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String mail = preferences.getString(email,null);
+        if(mail==null){
+            return false;
+        }
+        return true;
+    }
+
     public void registerUser(HashMap<String,String> infoUser){
         SharedPreferences pref= getActivity().getApplicationContext().getSharedPreferences("MyFilename", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
+        String get;
         for(Map.Entry<String, String> entry : infoUser.entrySet()) {
             editor.putString(entry.getKey(),entry.getValue());
+            editor.commit();
+            get = pref.getString("gerry@gmail.com","DEFAULT");
         }
-        editor.commit();
+
+
+
     }
 }
