@@ -113,7 +113,7 @@ public class RegisterFragment extends Fragment {
         String get;
         for(Map.Entry<String, String> entry : infoUser.entrySet()) {
             editor.putString(entry.getKey(),entry.getValue());
-            editor.commit();
+            editor.apply();
             get = pref.getString("gerry@gmail.com","DEFAULT");
         }
 
