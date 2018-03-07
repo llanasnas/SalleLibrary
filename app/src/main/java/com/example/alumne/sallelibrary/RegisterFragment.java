@@ -2,6 +2,7 @@ package com.example.alumne.sallelibrary;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -79,7 +80,9 @@ public class RegisterFragment extends Fragment {
                     infoUser.put(email.getText().toString()+"/name",name.getText().toString());
                     if(!userExists(email.getText().toString())){
                         registerUser(infoUser);
-                        Toast.makeText(getActivity(),"Usuario registrado correc", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"Usuario registrado correcto", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
                     }else{
                         Toast.makeText(getActivity(),"Usuario ya registrado", Toast.LENGTH_SHORT).show();
                     }
