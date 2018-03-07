@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.buttonedittext.ButtonEditText;
 
@@ -64,6 +65,6 @@ public class LoginFragment extends Fragment implements ButtonEditText.onButtonEd
 
     @Override
     public void onButtonEditTextClicked(ButtonEditText source, String email, String passwd) {
-
+        Toast.makeText(getActivity(),"xddddd", Toast.LENGTH_SHORT).show();
     }
 }

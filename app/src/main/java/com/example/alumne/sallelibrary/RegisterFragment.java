@@ -101,8 +101,8 @@ public class RegisterFragment extends Fragment {
     }
 
     public boolean userExists(String email){
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String mail = preferences.getString(email,null);
+        SharedPreferences pref= getActivity().getApplicationContext().getSharedPreferences("MyFilename", Context.MODE_PRIVATE);
+        String mail = pref.getString(email,null);
         return mail != null;
 
     }
@@ -114,7 +114,7 @@ public class RegisterFragment extends Fragment {
         for(Map.Entry<String, String> entry : infoUser.entrySet()) {
             editor.putString(entry.getKey(),entry.getValue());
             editor.apply();
-            get = pref.getString("gerry@gmail.com","DEFAULT");
+            get = pref.getString("a@a.com","DEFAULT");
         }
 
 
