@@ -69,14 +69,17 @@ public class RegisterFragment extends Fragment {
                 }else{passwordcheck=true;}
                 if(!repassword.getText().toString().equals(password.getText().toString())){
                     repassword.setError("No coinciden los passwords");
-                    password.setError("No coincinciden los passwords");
-                }else{repasswordcheck=true;}
-                if(namecheck&&emailcheck&&passwordcheck&&repasswordcheck){
+                    password.setError("No coinciden los passwords");
+                }else{
+                    repasswordcheck = true;
+                }
+                if(namecheck && emailcheck && passwordcheck && repasswordcheck){
                     HashMap infoUser = new HashMap<String,String>();
                     infoUser.put(email.getText().toString(),password.getText().toString());
                     infoUser.put(email.getText().toString()+"/name",name.getText().toString());
-                    if(userExists(email.getText().toString())){
+                    if(!userExists(email.getText().toString())){
                         registerUser(infoUser);
+                        Toast.makeText(getActivity(),"Usuario registrado correc", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getActivity(),"Usuario ya registrado", Toast.LENGTH_SHORT).show();
                     }
@@ -100,10 +103,8 @@ public class RegisterFragment extends Fragment {
     public boolean userExists(String email){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String mail = preferences.getString(email,null);
-        if(mail==null){
-            return false;
-        }
-        return true;
+        return mail != null;
+
     }
 
     public void registerUser(HashMap<String,String> infoUser){

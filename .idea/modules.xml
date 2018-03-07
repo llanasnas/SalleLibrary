@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\SalleLibraryy\SalleLibrary.iml" filepath="C:\SalleLibraryy\SalleLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SalleLibraryy.iml" filepath="$PROJECT_DIR$/SalleLibraryy.iml" />
-      <module fileurl="file://C:\Users\Usuari1\Desktop\SalleLibrary\SalleLibraryy.iml" filepath="C:\Users\Usuari1\Desktop\SalleLibrary\SalleLibraryy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SalleLibraryyy.iml" filepath="$PROJECT_DIR$/SalleLibraryyy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buttonedittext/buttonedittext.iml" filepath="$PROJECT_DIR$/buttonedittext/buttonedittext.iml" />
     </modules>
