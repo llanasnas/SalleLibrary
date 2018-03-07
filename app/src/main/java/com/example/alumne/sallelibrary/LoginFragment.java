@@ -1,6 +1,9 @@
 package com.example.alumne.sallelibrary;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
@@ -35,9 +38,6 @@ public class LoginFragment extends Fragment implements ButtonEditText.onButtonEd
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login,container,false);
-
-        ButtonEditText buttonEditText = view.findViewById(R.id.loginComponent);
-        buttonEditText.setOnButtonEditTextClickedListener(this);
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -46,6 +46,7 @@ public class LoginFragment extends Fragment implements ButtonEditText.onButtonEd
         super.onActivityCreated(savedInstanceState);
 
         ButtonEditText buttonEditText = getView().findViewById(R.id.loginComponent);
+        buttonEditText.setOnButtonEditTextClickedListener(this);
         buttonEditText.setFirstText(getResources().getString(R.string.account));
         buttonEditText.setSecondText(getResources().getString(R.string.password));
         buttonEditText.setText(getResources().getString(R.string.Submit));
@@ -65,6 +66,21 @@ public class LoginFragment extends Fragment implements ButtonEditText.onButtonEd
 
     @Override
     public void onButtonEditTextClicked(ButtonEditText source, String email, String passwd) {
-        Toast.makeText(getActivity(),"xddddd", Toast.LENGTH_SHORT).show();
+        loginUser(email,passwd);
+    }
+
+    public void loginUser(String email, String passwd){
+        SharedPreferences pref= getActivity().getApplicationContext().getSharedPreferences("MyFilename", Context.MODE_PRIVATE);
+        String password = pref.getString(email,null);
+        if (password != null){
+            if (password.equals(passwd)){
+                Intent startMain = new Intent(getActivity(),MainActivity.class);
+                startActivity(startMain);
+            }else{
+                Toast.makeText(getActivity(),"No te sabes tu contraseña!", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(getActivity(),"Email incorrecto", Toast.LENGTH_SHORT).show();
+        }
     }
 }
