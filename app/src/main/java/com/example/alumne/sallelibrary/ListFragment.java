@@ -3,6 +3,7 @@ package com.example.alumne.sallelibrary;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,10 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        Log.d("Listview", "clicked");
+        MainActivity activity = (MainActivity) getActivity();
+        activity.onItemClick(books.get(i));
 
     }
 }

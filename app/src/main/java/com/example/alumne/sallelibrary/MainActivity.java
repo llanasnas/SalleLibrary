@@ -1,10 +1,14 @@
 package com.example.alumne.sallelibrary;
 
 import android.app.FragmentManager;
+import android.os.Parcelable;
+import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnItemSelectedListener{
 
     public static FragmentManager fragmentManager;
 
@@ -18,6 +22,23 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().add(R.id.mainActivity, login).commit();
+
+    }
+
+
+    @Override
+    public void onItemClick(Book book) {
+        FragmentManager fragmentManager = getFragmentManager();
+        DetailsFragment fragment = new DetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("book", book);
+        fragment.setArguments(bundle);
+
+            fragmentManager.
+                    beginTransaction().
+                    replace(R.id.mainActivity, fragment).
+                    addToBackStack(null).
+                    commit();
 
     }
 }
