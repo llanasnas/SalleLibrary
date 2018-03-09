@@ -45,5 +45,4 @@ public class DetailsFragment extends Fragment {
         autor.setText(book.getAutor());
         return view;
     }
-
 }
