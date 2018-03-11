@@ -7,8 +7,12 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -48,6 +52,8 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
         View view =  inflater.inflate(R.layout.fragment_list, container, false);
         //books = getBooks();
         ListView listView = view.findViewById(R.id.listView);
+        Toolbar myToolbar = (Toolbar) view.findViewById(R.id.my_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
         adapter = new BookAdapter(books, getActivity());
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
@@ -60,12 +66,17 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
         Book book = new Book("titulo guachi piruli","Jennifer Polaka","Tiene verdugos","hola imagen");
         Book book2 = new Book("castigado","Oskar Domingas","Tiene verdugos","hola imagen");
         Book book3 = new Book("Bennet","Jennifer Polaka","Tiene verdugos","hola imagen");
-
         books.add(book);
         books.add(book2);
         books.add(book3);
         return books;
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu,MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.menu2,menu);
     }
 
     @Override
@@ -123,15 +134,11 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
                             Log.d("LIBRO",book.toString());
                         }
                         adapter.notifyDataSetChanged();
-
                     }
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-
         }
 
         // Given a URL, establishes an HttpUrlConnection and retrieves
@@ -167,12 +174,10 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             StringBuilder sb = new StringBuilder();
             String line;
-
             try {
                 while ((line = br.readLine()) != null) {
                     sb.append(line).append("\n");
                 }
-
                 jsonObject = new JSONObject(sb.toString());
 
             } catch (JSONException | IOException e) {
@@ -180,8 +185,5 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
             }
             return jsonObject;
         }
-
     }
-
-
 }
