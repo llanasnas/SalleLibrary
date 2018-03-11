@@ -7,22 +7,18 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,14 +48,47 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
         View view =  inflater.inflate(R.layout.fragment_list, container, false);
         //books = getBooks();
         ListView listView = view.findViewById(R.id.listView);
-        Toolbar myToolbar = (Toolbar) view.findViewById(R.id.my_toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
         adapter = new BookAdapter(books, getActivity());
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
         fetchBooks(DEFAULT_QUERY);
         return view;
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        ImageView buscar = (ImageView) getActivity().findViewById(R.id.search_icon);
+        final EditText text = (EditText) getActivity().findViewById(R.id.search_text);
+        ImageView favoritos = (ImageView) getActivity().findViewById(R.id.favorites);
+        buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(!text.getText().toString().isEmpty()){
+                    books.clear();
+                    fetchBooks(text.getText().toString());
+                }else{
+                    text.setError("No puede estar vacio");
+                }
+
+
+
+            }
+        });
+        favoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                books.clear();
+
+            }
+        });
+
+    }
+
     private ArrayList<Book> getBooks(){
 
         ArrayList<Book> books = new ArrayList<Book>();
@@ -73,11 +102,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
 
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu,MenuInflater inflater) {
-        menu.clear();
-        inflater.inflate(R.menu.menu2,menu);
-    }
+
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -87,6 +112,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
         activity.onItemClick(books.get(i));
 
     }
+
 
     private void fetchBooks(String query) {
 
