@@ -53,7 +53,6 @@ public class LoginFragment extends Fragment implements ButtonEditText.onButtonEd
         buttonEditText.setSecondText(getResources().getString(R.string.password));
         buttonEditText.setText(getResources().getString(R.string.Submit));
         TextView register = (TextView) getView().findViewById(R.id.register);
-
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

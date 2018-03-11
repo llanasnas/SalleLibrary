@@ -2,6 +2,7 @@ package com.example.alumne.sallelibrary;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -16,6 +17,11 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,9 +29,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.Policy;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -35,6 +44,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
 
     private ArrayList<Book> books = new ArrayList<>();
     private BookAdapter adapter;
+    private User currentUser;
     private static final String DEFAULT_QUERY = "android";
 
     public ListFragment() {
@@ -63,6 +73,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
         ImageView buscar = (ImageView) getActivity().findViewById(R.id.search_icon);
         final EditText text = (EditText) getActivity().findViewById(R.id.search_text);
         ImageView favoritos = (ImageView) getActivity().findViewById(R.id.favorites);
+        currentUser = getArguments().getParcelable("user");
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,26 +91,24 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
             @Override
             public void onClick(View view) {
 
-                books.clear();
+                SharedPreferences pref= getActivity().getApplicationContext().getSharedPreferences("MyFilename", Context.MODE_PRIVATE);
+                String book = pref.getString(currentUser.getEmail().concat("f"),"DEFAULT");
+                Gson gson = new Gson();
+                if(book!=null){
+                    Type listType = new TypeToken<ArrayList<Book>>() {}.getType();
+                    ArrayList<Book> arrayList = gson.fromJson(book,listType);
+                    Toast.makeText(getActivity(), "funciona", Toast.LENGTH_SHORT).show();
+                    books.clear();
 
+                    books.addAll(arrayList);
+                    adapter.notifyDataSetChanged();
+                }else{
+                    Toast.makeText(getActivity(), "No tienes favoritos", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
     }
-
-    private ArrayList<Book> getBooks(){
-
-        ArrayList<Book> books = new ArrayList<Book>();
-        Book book = new Book("titulo guachi piruli","Jennifer Polaka","Tiene verdugos","hola imagen");
-        Book book2 = new Book("castigado","Oskar Domingas","Tiene verdugos","hola imagen");
-        Book book3 = new Book("Bennet","Jennifer Polaka","Tiene verdugos","hola imagen");
-        books.add(book);
-        books.add(book2);
-        books.add(book3);
-        return books;
-
-    }
-
 
 
     @Override

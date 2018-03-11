@@ -1,13 +1,24 @@
 package com.example.alumne.sallelibrary;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -16,6 +27,7 @@ import android.widget.TextView;
 public class DetailsFragment extends Fragment {
 
     private Book book;
+    private User currentUser;
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -44,5 +56,40 @@ public class DetailsFragment extends Fragment {
         TextView autor = (TextView) view.findViewById(R.id.autor_details);
         autor.setText(book.getAutor());
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ImageView favoritos  = (ImageView) getActivity().findViewById(R.id.favoritostar);
+        currentUser = getArguments().getParcelable("user");
+        favoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getActivity(), currentUser.getEmail(), Toast.LENGTH_SHORT).show();
+                SharedPreferences pref= getActivity().getApplicationContext().getSharedPreferences("MyFilename", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                if(currentUser.getFavoritos().isEmpty()){
+                    ArrayList<Book> books = new ArrayList<Book>() ;
+                    books.add(book);
+                    currentUser.setFavoritos(books);
+                    Gson gson = new Gson();
+                    String jsonText = gson.toJson(currentUser.getFavoritos());
+                    editor.putString(currentUser.getEmail().concat("f"),jsonText);
+                    editor.apply();
+                    Toast.makeText(getActivity(), "libro añadido", Toast.LENGTH_SHORT).show();
+                }else{
+                    ArrayList<Book> books = currentUser.getFavoritos();
+                    books.add(book);
+                    currentUser.setFavoritos(books);
+                    Gson gson = new Gson();
+                    String jsonText = gson.toJson(currentUser.getFavoritos());
+                    editor.putString(currentUser.getEmail().concat("f"),jsonText);
+                    editor.apply();
+                    Toast.makeText(getActivity(), "libro añadido", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

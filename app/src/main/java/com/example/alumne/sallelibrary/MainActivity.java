@@ -17,13 +17,15 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Bundle parametros = this.getIntent().getExtras();
 
+        currentUser = parametros.getParcelable("user" );
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("user",currentUser);
         ListFragment login = new ListFragment();
+        login.setArguments(bundle);
         fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().add(R.id.mainActivity, login).commit();
-        Bundle parametros = this.getIntent().getExtras();
-        currentUser = parametros.getParcelable("user" );
-        Toast.makeText(this, currentUser.getNombre(), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         DetailsFragment fragment = new DetailsFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable("book", book);
+        bundle.putParcelable("user",currentUser);
         fragment.setArguments(bundle);
 
             fragmentManager.
@@ -41,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                     replace(R.id.mainActivity, fragment).
                     addToBackStack(null).
                     commit();
-
     }
 
 

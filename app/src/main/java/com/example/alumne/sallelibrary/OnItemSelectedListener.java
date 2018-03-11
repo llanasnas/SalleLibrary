@@ -7,5 +7,4 @@ package com.example.alumne.sallelibrary;
 public interface OnItemSelectedListener {
 
     void onItemClick(Book book);
-
 }

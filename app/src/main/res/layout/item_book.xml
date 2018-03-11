@@ -9,7 +9,6 @@
         android:layout_height="130dp"
         android:src="@drawable/book"
         android:id="@+id/imagen"
-
         />
 
     <TextView
