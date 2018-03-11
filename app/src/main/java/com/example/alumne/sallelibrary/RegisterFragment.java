@@ -80,8 +80,12 @@ public class RegisterFragment extends Fragment {
                     infoUser.put(email.getText().toString()+"/name",name.getText().toString());
                     if(!userExists(email.getText().toString())){
                         registerUser(infoUser);
+                        User user = new User(name.getText().toString(),email.getText().toString(),password.getText().toString());
+                        Bundle bundle  = new Bundle();
+                        bundle.putParcelable("user",user);
                         Toast.makeText(getActivity(),"Usuario registrado correcto", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                     }else{
                         Toast.makeText(getActivity(),"Usuario ya registrado", Toast.LENGTH_SHORT).show();

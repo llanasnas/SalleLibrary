@@ -22,6 +22,8 @@ import com.example.buttonedittext.ButtonEditText;
 public class LoginFragment extends Fragment implements ButtonEditText.onButtonEditTextClickedListener {
 
 
+
+
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -59,9 +61,6 @@ public class LoginFragment extends Fragment implements ButtonEditText.onButtonEd
                 activity.fragmentTransaction();
             }
         });
-
-
-
     }
 
     @Override
@@ -74,7 +73,11 @@ public class LoginFragment extends Fragment implements ButtonEditText.onButtonEd
         String password = pref.getString(email,null);
         if (password != null){
             if (password.equals(passwd)){
+                Bundle bundle = new Bundle();
+                User user = new User("coaxial",email,passwd);
+                bundle.putParcelable("user",user);
                 Intent startMain = new Intent(getActivity(),MainActivity.class);
+                startMain.putExtras(bundle);
                 startActivity(startMain);
             }else{
                 Toast.makeText(getActivity(),"No te sabes tu contraseña!", Toast.LENGTH_SHORT).show();

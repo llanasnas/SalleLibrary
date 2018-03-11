@@ -1,21 +1,16 @@
 package com.example.alumne.sallelibrary;
 
 import android.app.FragmentManager;
-import android.os.Parcelable;
-import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
+import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity implements OnItemSelectedListener{
 
 
     public static FragmentManager fragmentManager;
+    private static User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +19,11 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
 
         ListFragment login = new ListFragment();
-
         fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().add(R.id.mainActivity, login).commit();
+        Bundle parametros = this.getIntent().getExtras();
+        currentUser = parametros.getParcelable("user" );
+        Toast.makeText(this, currentUser.getNombre(), Toast.LENGTH_SHORT).show();
 
     }
 

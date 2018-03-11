@@ -36,6 +36,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
     private ArrayList<Book> books = new ArrayList<>();
     private BookAdapter adapter;
     private static final String DEFAULT_QUERY = "android";
+
     public ListFragment() {
         // Required empty public constructor
     }
@@ -73,9 +74,6 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
                 }else{
                     text.setError("No puede estar vacio");
                 }
-
-
-
             }
         });
         favoritos.setOnClickListener(new View.OnClickListener() {
