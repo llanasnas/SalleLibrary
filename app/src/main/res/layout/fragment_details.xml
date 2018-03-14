@@ -14,6 +14,7 @@
     <ImageView
         android:layout_width="130dp"
         android:layout_height="130dp"
+        android:layout_marginTop="@dimen/register"
         android:id="@+id/imagen_detail"
         android:src="@drawable/book"
         android:layout_gravity="center"
@@ -26,10 +27,19 @@
         android:text="TITULO"
         android:layout_below="@id/imagen_detail"
         android:textSize="@dimen/register"
+        android:layout_marginLeft="@dimen/register"
         android:layout_marginTop="@dimen/register"
         android:layout_marginBottom="@dimen/register"
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_star_border_black_24dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="@dimen/register"
+        android:id="@+id/favoritostar"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,15 +56,10 @@
         android:text="Autor"
         android:layout_marginTop="@dimen/register"
         android:layout_marginLeft="@dimen/register"
+        android:layout_marginBottom="@dimen/register"
         android:id="@+id/autor_details"
         />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_star_border_black_24dp"
-        android:layout_gravity="end"
-        android:id="@+id/favoritostar"
-        />
+
 </LinearLayout>
 </ScrollView>
