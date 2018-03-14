@@ -55,6 +55,8 @@ public class DetailsFragment extends Fragment {
         description.setText(book.getDescription());
         TextView autor = (TextView) view.findViewById(R.id.autor_details);
         autor.setText(book.getAutor());
+        TextView desc = (TextView) view.findViewById(R.id.description);
+        desc.setText(book.getDescription());
         return view;
     }
 

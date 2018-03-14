@@ -26,7 +26,7 @@ public class Book implements Parcelable{
     private static final String BOOK_NODE_NAME = "volumeInfo";
     private static final String IMAGES_NODE_NAME = "imageLinks";
     private static final String IMAGES_NODE_AUTHORS = "authors";
-
+    private static final String DESC = "description";
     private static final String TITLE_ELEMENT_NAME = "title";
     private static final String IMAGE_ELEMENT_NAME = "smallThumbnail";
 
@@ -119,6 +119,7 @@ public class Book implements Parcelable{
 
             book.title = volumeInfo.has(TITLE_ELEMENT_NAME) ? volumeInfo.getString(TITLE_ELEMENT_NAME) : "";
             book.autor = getAuthor(volumeInfo);
+            book.description = volumeInfo.has(DESC) ? volumeInfo.getString(DESC) : "";
             if (images.has(IMAGE_ELEMENT_NAME)) {
                 book.imagen = images.getString(IMAGE_ELEMENT_NAME);
             }

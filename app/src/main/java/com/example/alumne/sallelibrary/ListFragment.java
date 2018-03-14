@@ -162,6 +162,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
                         for (Book book : booksFromApi) {
                             books.add(book); // add book through the adapter
                             Log.d("LIBRO",book.toString());
+
                         }
                         adapter.notifyDataSetChanged();
                     }

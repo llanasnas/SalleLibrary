@@ -32,4 +32,6 @@
         android:id="@+id/autor"
         />
 
+
+
 </RelativeLayout>
