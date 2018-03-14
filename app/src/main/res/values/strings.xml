@@ -14,4 +14,7 @@
     <string name="reg">Registro</string>
     <string name="action_favorite">add to favoritos</string>
     <string name="Buscar">Realiza una búsqueda </string>
+    <string name="not_empty">No puede estar vacio</string>
+    <string name="no_favorites">No tienes ningún favorito</string>
+    <string name="added_book">Libro añadido</string>
 </resources>

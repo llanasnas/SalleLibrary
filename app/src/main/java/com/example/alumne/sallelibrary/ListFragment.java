@@ -83,7 +83,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
                     books.clear();
                     fetchBooks(text.getText().toString());
                 }else{
-                    text.setError("No puede estar vacio");
+                    text.setError(getActivity().getResources().getString(R.string.not_empty));
                 }
             }
         });
@@ -97,17 +97,14 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
                 if(book!=null){
                     Type listType = new TypeToken<ArrayList<Book>>() {}.getType();
                     ArrayList<Book> arrayList = gson.fromJson(book,listType);
-                    Toast.makeText(getActivity(), "funciona", Toast.LENGTH_SHORT).show();
                     books.clear();
-
                     books.addAll(arrayList);
                     adapter.notifyDataSetChanged();
                 }else{
-                    Toast.makeText(getActivity(), "No tienes favoritos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.no_favorites), Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
 
 

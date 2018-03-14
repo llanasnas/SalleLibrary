@@ -9,6 +9,7 @@
         android:layout_width="@dimen/dimentext"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:inputType="textEmailAddress"
         android:layout_marginBottom="@dimen/margins"
         android:id="@+id/email"
         />

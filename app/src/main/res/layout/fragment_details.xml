@@ -35,7 +35,7 @@
         android:layout_marginLeft="@dimen/register"
         android:layout_marginRight="@dimen/register"
         android:layout_below="@id/titulo_detail"
-        android:text="esto es una puta descripción xavales asi que tened cuidado conmigo"
+        android:text="@string/app_name"
         />
     <TextView
         android:layout_width="wrap_content"

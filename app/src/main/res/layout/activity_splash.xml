@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50dp"
+        android:textSize="@dimen/Title_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margins"
         android:text="@string/app_name"

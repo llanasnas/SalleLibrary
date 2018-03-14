@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="@dimen/image_size"
     >
 
     <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
         android:src="@drawable/book"
         android:id="@+id/imagen"
         />
@@ -18,7 +18,7 @@
         android:layout_marginLeft="@dimen/register"
         android:layout_marginTop="@dimen/register"
         android:id="@+id/titulo"
-        android:text="Titulo del libro"
+        android:text="@string/app_name"
         android:textSize="@dimen/register"
         />
     <TextView
@@ -28,7 +28,7 @@
         android:layout_below="@+id/titulo"
         android:layout_marginLeft="@dimen/register"
         android:layout_marginTop="@dimen/register"
-        android:text="Descripcion"
+        android:text="@string/hello_blank_fragment"
         android:id="@+id/autor"
         />
 

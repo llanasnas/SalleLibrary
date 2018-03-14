@@ -78,7 +78,7 @@ public class DetailsFragment extends Fragment {
                     String jsonText = gson.toJson(currentUser.getFavoritos());
                     editor.putString(currentUser.getEmail().concat("f"),jsonText);
                     editor.apply();
-                    Toast.makeText(getActivity(), "libro añadido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.added_book), Toast.LENGTH_SHORT).show();
                 }else{
                     ArrayList<Book> books = currentUser.getFavoritos();
                     books.add(book);
@@ -87,7 +87,7 @@ public class DetailsFragment extends Fragment {
                     String jsonText = gson.toJson(currentUser.getFavoritos());
                     editor.putString(currentUser.getEmail().concat("f"),jsonText);
                     editor.apply();
-                    Toast.makeText(getActivity(), "libro añadido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.added_book), Toast.LENGTH_SHORT).show();
                 }
             }
         });
