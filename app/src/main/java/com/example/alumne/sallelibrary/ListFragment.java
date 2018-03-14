@@ -94,7 +94,7 @@ public class ListFragment extends Fragment implements AdapterView.OnItemClickLis
                 SharedPreferences pref= getActivity().getApplicationContext().getSharedPreferences("MyFilename", Context.MODE_PRIVATE);
                 String book = pref.getString(currentUser.getEmail().concat("f"),"DEFAULT");
                 Gson gson = new Gson();
-                if(book!=null){
+                if(!book.equals("DEFAULT")){
                     Type listType = new TypeToken<ArrayList<Book>>() {}.getType();
                     ArrayList<Book> arrayList = gson.fromJson(book,listType);
                     books.clear();
