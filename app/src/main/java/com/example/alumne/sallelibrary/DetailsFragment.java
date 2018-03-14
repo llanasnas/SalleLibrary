@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -57,6 +58,8 @@ public class DetailsFragment extends Fragment {
         autor.setText(book.getAutor());
         TextView desc = (TextView) view.findViewById(R.id.description);
         desc.setText(book.getDescription());
+        ImageView foto = (ImageView) view.findViewById(R.id.imagen_detail);
+        Picasso.get().load(book.getImagen()).into(foto);
         return view;
     }
 

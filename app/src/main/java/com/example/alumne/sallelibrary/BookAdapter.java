@@ -6,7 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class BookAdapter extends BaseAdapter{
@@ -45,6 +49,8 @@ public class BookAdapter extends BaseAdapter{
         titol.setText(book.getTitle());
         TextView autor = (TextView) view.findViewById(R.id.autor);
         autor.setText(book.getAutor());
+        ImageView foto = (ImageView) view.findViewById(R.id.imagen);
+        Picasso.get().load(book.getImagen()).into(foto);
         return view;
 
     }
